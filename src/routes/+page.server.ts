@@ -1,3 +1,5 @@
+import { listFiles } from '$lib/methods';
+
 import { fail } from '@sveltejs/kit';
 
 interface Book {
@@ -13,6 +15,8 @@ const defaultBooks = [
 ];
 
 export async function load() {
+	const allFiles = await listFiles();
+	console.log({ allFiles });
 	const books: Book[] = defaultBooks;
 	return { books };
 }
